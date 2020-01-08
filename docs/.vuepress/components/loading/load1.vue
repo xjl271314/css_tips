@@ -1,85 +1,69 @@
+// 创作于2020-01-07 灵感来源掘金社区
+<template>
+  <div class="load-container">
+    <div v-for="(item, i) in repeat" class="dot"></div>
+  </div>
+</template>
+
 <style scoped lang="scss">
 .load-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-  .boxLoading {
-    width: 50px;
-    height: 50px;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    &:before {
+  $colors: #7ef9ff, #89cff0, #4682b4, #0f52ba, #000080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-delay: 1s;
+  font-size: 16px;
+  padding:0.5em;
+  .dot {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+    border-radius: 50%;
+
+    &::before {
       content: "";
-      width: 50px;
-      height: 5px;
-      background: #000;
-      opacity: 0.1;
       position: absolute;
-      top: 59px;
-      left: 0;
-      border-radius: 50%;
-      animation: shadow 0.5s linear infinite;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      animation: wave 2s ease-out infinite;
     }
-    &:after {
-      content: "";
-      width: 50px;
-      height: 50px;
-      background: #00adb5;
-      animation: animate 0.5s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 3px;
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        // background: nth($colors, $i);
+        background: rgb(random(256), random(256), random(256));
+
+        &::before {
+          animation-delay: $i * 0.2s;
+        }
+      }
     }
   }
-}
 
-@keyframes animate {
-  17% {
-    border-bottom-right-radius: 3px;
-  }
-  25% {
-    transform: translateY(9px) rotate(22.5deg);
-  }
-  50% {
-    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-    border-bottom-right-radius: 40px;
-  }
-  75% {
-    transform: translateY(9px) rotate(67.5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(90deg);
-  }
-}
+  @keyframes wave {
+    50%,
+    75% {
+      transform: scale(2);
+    }
 
-@keyframes shadow {
-  0%,
-  100% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(1.2, 1);
+    80%,
+    100% {
+      opacity: 0;
+    }
   }
 }
 </style>
-
-<template>
-  <div class="load-container">
-    <div class="boxLoading"></div>
-  </div>
-</template>
 
 <script>
 export default {
   name: "load1",
   data() {
-    return {};
+    return {
+      repeat: Array(5).fill(1)
+    };
   }
 };
 </script>

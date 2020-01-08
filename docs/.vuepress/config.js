@@ -3,10 +3,10 @@ module.exports = {
   title: "CSS Tricks",
   description: "some CSS tricks, 一些常用的 CSS 样式, 一点 CSS 技巧",
   dest: "./dist",
-  base: "/css_tricks/",
+  base: "/css_tricks/",// github
   head: [
     ["link", { rel: "icon", href: "/images/favicon.png" }],
-    ["meta", { name: "theme-color", content: "#00adb5" }],
+    ["meta", { name: "theme-color", content: "#11998e" }],
     [
       "meta",
       {
@@ -25,7 +25,7 @@ module.exports = {
       "meta",
       {
         name: "msapplication-TileColor",
-        content: "#00adb5"
+        content: "#11998e"
       }
     ],
     [
@@ -45,7 +45,7 @@ module.exports = {
       }
     ]
   ],
-  repo: "https://github.com/QiShaoXuan/css_tricks",
+  repo: "",
   locales: {
     "/": {
       lang: "zh-CN",
@@ -61,7 +61,6 @@ module.exports = {
   plugins: [
     require("./plugins/comment/index"),
     require("./plugins/copy/index"),
-    "vuepress-plugin-cat",
     "@vuepress/nprogress",
     [
       "@vuepress/google-analytics",
@@ -81,15 +80,15 @@ module.exports = {
     nav: [
       {
         text: "js tricks",
-        link: "https://qishaoxuan.github.io/js_tricks/"
+        link: ""
       },
       {
         text: "blog",
-        link: "https://qishaoxuan.github.io/blog/"
+        link: ""
       },
       {
         text: "GitHub",
-        link: "https://github.com/QiShaoXuan/css_tricks"
+        link: ""
       }
     ],
     locales: {
@@ -142,7 +141,7 @@ module.exports = {
             ]
           },
           {
-            title: "静",
+            title: "实用工具",
             collapsable: false,
             children: [
               ["/reset/", "清除默认样式"],

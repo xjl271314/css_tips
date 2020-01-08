@@ -1,267 +1,371 @@
-## loading_1
+## 交错加载动画
 
 <loading-load1/>
 ```html
   <div class="load-container">
-    <div class="boxLoading"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
   </div>
 ```
 ```scss
 .load-container {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  .boxLoading {
-    width: 50px;
-    height: 50px;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    &:before {
-      content: "";
-      width: 50px;
-      height: 5px;
-      background: #000;
-      opacity: 0.1;
-      position: absolute;
-      top: 59px;
-      left: 0;
-      border-radius: 50%;
-      animation: shadow 0.5s linear infinite;
-    }
-    &:after {
-      content: "";
-      width: 50px;
-      height: 50px;
-      background: #00adb5;
-      animation: animate 0.5s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 3px;
-    }
-  }
-}
+  // 颜色可以自己选择喜欢的 也可以使用random()函数随机生成 
+  // 也可以选定基色然后 进行lighten / darken / saturate / desaturate 等操作
+  $colors: #7ef9ff, #89cff0, #4682b4, #0f52ba, #000080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-delay: 1s;
+  font-size: 16px;
+  padding:0.5em;
+  .dot {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+    border-radius: 50%;
 
-@keyframes animate {
-  17% {
-    border-bottom-right-radius: 3px;
-  }
-  25% {
-    transform: translateY(9px) rotate(22.5deg);
-  }
-  50% {
-    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
-    border-bottom-right-radius: 40px;
-  }
-  75% {
-    transform: translateY(9px) rotate(67.5deg);
-  }
-  100% {
-    transform: translateY(0) rotate(90deg);
-  }
-}
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      animation: wave 2s ease-out infinite;
+    }
 
-@keyframes shadow {
-  0%,
-  100% {
-    transform: scale(1, 1);
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        background: nth($colors, $i);
+        // 每次生成随机颜色
+        // background: rgb(random(256), random(256), random(256));
+        &::before {
+          animation-delay: $i * 0.2s;
+        }
+      }
+    }
   }
-  50% {
-    transform: scale(1.2, 1);
+
+  @keyframes wave {
+    50%,
+    75% {
+      transform: scale(2);
+    }
+
+    80%,
+    100% {
+      opacity: 0;
+    }
   }
 }
 ```
-
- > <a href="https://codepen.io/dicson/pen/vOxZjM" target="_blank">https://codepen.io/dicson/pen/vOxZjM</a>
-
-## loading_2
+## 六边形加载动画
 
 <loading-load2/>
 
 ```html
-  <svg id="load" x="0px" y="0px" viewBox="0 0 150 150">
-    <circle id="loading-inner" cx="75" cy="75" r="60"/>
-  </svg>
+  <div class="load-container">
+      <svg
+        version="1.1"
+        x="0px"
+        y="0px"
+        width="150px"
+        height="150px"
+        viewBox="0 0 213.235 241.176"
+        enable-background="new 0 0 213.235 241.176"
+        xml:space="preserve"
+      >
+        <path d="M108.581,64.968V14.124l44.007,25.422L108.581,64.968" />
+        <path
+          fill-opacity="0.9"
+          d="M153.591,92.101V41.258L109.582,66.68L153.591,92.101"
+        />
+        <path d="M155.586,92.062V41.221l44.009,25.42L155.586,92.062" />
+        <path
+          fill-opacity="0.7"
+          d="M200.299,119.14V68.297l-44.004,25.421L200.299,119.14"
+        />
+        <path
+          fill-opacity="0.85"
+          d="M155.586,146.255V95.412l44.009,25.422L155.586,146.255"
+        />
+        <path
+          fill-opacity="0.7"
+          d="M200.299,173.35v-50.844l-44.004,25.422L200.299,173.35"
+        />
+        <path
+          fill-opacity="0.6"
+          d="M155.586,200.482v-50.84l44.009,25.417L155.586,200.482"
+        />
+        <path
+          fill-opacity="0.5"
+          d="M153.591,200.521v-50.84l-44.009,25.418L153.591,200.521"
+        />
+        <path
+          fill-opacity="0.6"
+          d="M108.581,227.696v-50.844l44.007,25.421L108.581,227.696"
+        />
+        <path
+          fill-opacity="0.5"
+          d="M106.62,227.696v-50.844l-44.005,25.421L106.62,227.696"
+        />
+        <path
+          fill-opacity="0.7"
+          d="M61.562,200.553V149.71l44.007,25.423L61.562,200.553"
+        />
+        <path
+          fill-opacity="0.7"
+          d="M59.709,200.56v-50.843l-44.008,25.422L59.709,200.56"
+        />
+        <path
+          fill-opacity="0.7"
+          d="M14.699,173.467v-50.843l44.01,25.42L14.699,173.467"
+        />
+        <path
+          fill-opacity="0.5"
+          d="M59.709,146.235V95.392l-44.008,25.42L59.709,146.235"
+        />
+        <path
+          fill-opacity="0.7"
+          d="M14.699,119.141V68.297l44.01,25.421L14.699,119.141"
+        />
+        <path
+          fill-opacity="0.6"
+          d="M59.709,92.101V41.258L15.701,66.68L59.709,92.101"
+        />
+        <path
+          fill-opacity="0.85"
+          d="M61.562,92.092V41.249l44.007,25.419L61.562,92.092"
+        />
+        <path
+          fill-opacity="0.9"
+          d="M106.62,64.968V14.124L62.614,39.546L106.62,64.968"
+        />
+      </svg>
+  </div>
 ```
 
 ```scss
+$pathNumber: 18;
+// The color that will be at the beginning and the end of the loop.
+$firstColor: #0057B8;
+// The list of all the used colors. You can add or remove colors, the animation stays fluid. The $first-color must remain at the end of the list though.
+$listColors: #F11E4A, #F8A527, #266D7F, #82A, $firstColor;
+// animation delay time
+$delayCoeff: 0.1s; 
+
 .load-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  height: 150px;
+  padding: 15px;
 }
 
-#load {
-  width: 75px;
-  animation: loading 3s linear infinite;
-  #loading-inner {
-    stroke: {
-      dashoffset: 0;
-      dasharray: 300;
-      width: 10;
-      miterlimit: 10;
-      linecap: round;
+svg {
+  fill: $firstColor;
+  @for $i from 1 through $pathNumber {
+      path:nth-child(#{$i}) {
+        animation: pweek $delayCoeff*$pathNumber linear infinite;
+        animation-delay: $i*$delayCoeff;
+        &:hover {
+          animation-play-state: paused;
+        }
+      }
+   }
+}
+
+@keyframes pweek {
+  0% {
+    fill: $firstColor;
+  }
+  @for $i from 1 through length($listColors) {
+    #{$i*(100/length($listColors))}% {
+      fill: nth($listColors, $i);
     }
-    animation: loading-circle 2s linear infinite;
-    stroke: #00adb5;
-    fill: transparent;
-  }
-}
-
-@keyframes loading {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes loading-circle {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -600;
   }
 }
 ```
 
-> <a href="https://codepen.io/pedox/pen/PwQezw" target="_blank">https://codepen.io/pedox/pen/PwQezw</a>
-
-## loading_3
+## 爬楼梯动画
 
 <loading-load3/>
 ```html
-  <div class="load"></div>
+  <div class="load-container">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="ball"></div>
+  </div>
 ```
 ```scss
-.load {
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
+$gap: 2px;
+$width: 10px;
+$size: 5;
+$colors: red, orange, yellow, green, purple;
+$ballColor: gray;
+
+.load-container {
   position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: rgba(0, 169, 178,.2);;
-  &::before {
-    content: "";
-    width: 70px; // 50 * √2
-    height: 70px; // 50 * √2
-    background-color: #00adb5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  .bar {
+    width: $width;
+    height: $width * $size;
+    margin-right: $gap;
+    transform-origin: center bottom;
+  }
+  .ball {
     position: absolute;
-    left: 50%;
+    width: $width;
+    height: $width;
     bottom: 50%;
-    z-index: 1;
-    transform-origin: left bottom;
-    animation: rotate 1.5s infinite linear;
-  }
-  &::after {
-    content: "";
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: #fff;
-    z-index: 2;
+    left: 50%;
+    margin-left: -$width * ($size/2 + 0.5);
     border-radius: 50%;
+    background: $ballColor;
+    animation: ballUp 4s infinite;
   }
-}
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
+  @for $i from 1 through $size {
+    .bar:nth-child(#{$i}) {
+      background: nth($colors, $i);
+      box-shadow: 0px 0px 1px darken(nth($colors, $i), 10%);
+      transform: scale(1, $i * 0.2);
+      animation: barUp#{$i} 4s infinite;
+    }
   }
-  50% {
-    transform: rotate(180deg);
+  @keyframes ballUp {
+    0%,
+    100% {
+      transform: translate(0, 14px);
+    }
+    5% {
+      transform: translate(7px, -9px);
+    }
+    10% {
+      transform: translate(15px, -5px);
+    }
+    17% {
+      transform: translate(22px, -19px);
+    }
+    20% {
+      transform: translate(30px, -15px);
+    }
+    27% {
+      transform: translate(37px, -29px);
+    }
+    30% {
+      transform: translate(42px, -25px);
+    }
+    37% {
+      transform: translate(45px, -39px);
+    }
+    40% {
+      transform: translate(50px, -35px);
+    }
+    50% {
+      transform: translate(50px, 14px);
+    }
+    57% {
+      transform: translate(45px, -9px);
+    }
+    60% {
+      transform: translate(42px, 0px);
+    }
+    67% {
+      transform: translate(37px, -14px);
+    }
+    70% {
+      transform: translate(30px, -10px);
+    }
+    77% {
+      transform: translate(22px, -24px);
+    }
+    80% {
+      transform: translate(15px, -20px);
+    }
+    87% {
+      transform: translate(7px, -34px);
+    }
+    90% {
+      transform: translate(0, -30px);
+    }
   }
-  100% {
-    transform: rotate(360deg);
+
+  @for $i from 1 through $size {
+    @keyframes barUp#{$i} {
+      0%,
+      40%,
+      100% {
+        transform: scale(1, 0.2 * $i);
+      }
+      @if $i != 3 {
+        50%,
+        90% {
+          transform: scale(1, 1.2 - 0.2 * $i);
+        }
+      }
+    }
   }
 }
 ```
 
 
 
-## loading_4
+## 条纹加载动画
 
 <loading-load4/>
 ```html
-<div class="load-container">
-  <div class="container">
-      <div class="boxLoading boxLoading1"></div>
-      <div class="boxLoading boxLoading2"></div>
-      <div class="boxLoading boxLoading3"></div>
-      <div class="boxLoading boxLoading4"></div>
-      <div class="boxLoading boxLoading5"></div>
+  <div class="load-container">
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
   </div>
-</div>
 ```
 ```scss
 .load-container {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .container{
-        width: 50px;
-        height: 60px;
-        text-align: center;
-        font-size: 10px;
-        .boxLoading {
-            background-color: #00adb5;
-            height: 100%;
-            width: 6px;
-            display: inline-block;
-
-            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-            animation: stretchdelay 1.2s infinite ease-in-out;
-        }
-        .boxLoading2 {
-            -webkit-animation-delay: -1.1s;
-            animation-delay: -1.1s;
-        }
-        .boxLoading3 {
-            -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
-        }
-        .boxLoading4 {
-            -webkit-animation-delay: -0.9s;
-            animation-delay: -0.9s;
-        }
-        .boxLoading5 {
-            -webkit-animation-delay: -0.8s;
-            animation-delay: -0.8s;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  .boxLoading {
+    background-color: #00adb5;
+    height: 60px;
+    width: 6px;
+    margin-right: 4px;
+    display: inline-block;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+  }
+  @for $i from 2 through 5 {
+    .boxLoading:nth-child(#{$i}) {
+      animation-delay: 0.1 * $i - 1.3s;
     }
+  }
 }
 
-@-webkit-keyframes stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
-  20% { -webkit-transform: scaleY(1.0) }
-}
 @keyframes stretchdelay {
-  0%, 40%, 100% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
-  }  20% {
-    transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.5);
+  }
+  20% {
+    transform: scaleY(1);
   }
 }
 ```
 
 
-## loading_5
+## 3D翻转
 
 <loading-load5/>
 ```html
@@ -269,211 +373,132 @@
 ```
 ```scss
 .load-container {
-    width: 60px;
-    height: 60px;
-    background-color: #00adb5;
-
-    margin: 50px auto;
-    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
-    animation: rotateplane 1.2s infinite ease-in-out;
+  width: 60px;
+  height: 60px;
+  background-color: #00adb5;
+  margin: 50px auto;
+  transition: background-color .4s ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
 }
-
-@-webkit-keyframes rotateplane {
-  0% { -webkit-transform: perspective(120px) }
-  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
-}
-
 @keyframes rotateplane {
   0% {
+    background-color: rgb(random(256),random(256),random(256));
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
-  } 50% {
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
-  } 100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+  50% {
+    background-color: rgb(random(256),random(256),random(256));
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    background-color: rgb(random(256),random(256),random(256));
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
   }
 }
 ```
 
-## loading_6
+## 猩红之月
 
 <loading-load6/>
 ```html
   <div class="load-container">
-      <div class="load load1"></div>
-      <div class="load load2"></div>
-      <div class="load"></div>
+    <div class="moon"></div>
   </div>
 ```
 ```scss
+$size: 60px;
 .load-container {
-    margin: 50px auto;
-    width: 150px;
-    text-align: center;
-    .load {
-        width: 20px;
-        height: 20px;
-        background-color: #00adb5;
-
-        border-radius: 100%;
-        display: inline-block;
-        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-        animation: bouncedelay 1.4s infinite ease-in-out;
-        /* Prevent first frame from flickering when animation starts */
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  .moon {
+    position: relative;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    box-shadow: inset 0.1 * $size -0.1 * $size crimson;
+    animation: spin 2s linear infinite;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      box-shadow: inherit;
     }
-    .load1 {
-        -webkit-animation-delay: -0.32s;
-        animation-delay: -0.32s;
+    &::before {
+      filter: blur(5px);
     }
-    .load2 {
-        -webkit-animation-delay: -0.16s;
-        animation-delay: -0.16s;
+    &::after {
+      filter: blur(10px);
     }
-}
-
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.0) }
-  40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
   }
-}
+  @keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(1turn);
+    }
+  }
 ```
 
-## loading_7
+## 3D动态文本
 
 <loading-load7/>
 ```html
-<div class="load-container">
-  <div class="container container1">
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-      <div class="circle circle4"></div>
-  </div>
-  <div class="container container2">
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-      <div class="circle circle4"></div>
-  </div>
-  <div class="container container3">
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-      <div class="circle circle4"></div>
-  </div>
-</div>
+    <div class="load-container">
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+    </div>
 ```
 ```scss
-.load-container {
-    margin: 50px auto;
-    width: 48px;
-    height: 48px;
-    position: relative;
-    .container{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        .circle{
-            width: 12px;
-            height: 12px;
-            background-color: #00adb5;
+    $color:#2980b9;
+    $shadowColor:darken($color, 10%);
+    .load-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 0;
+        color: $color;
+        font-family: "Baloo Bhaijaan", cursive;
+        font-weight: bolder;
+        text-transform: uppercase;
+        >span{
+            font-size: 60px;
+            text-shadow: 0 1px $shadowColor, 
+            0 2px $shadowColor, 
+            0 3px $shadowColor, 
+            0 4px $shadowColor, 
+            0 5px $shadowColor, 
+            0 6px transparent, 
+            0 7px transparent, 
+            0 8px transparent, 
+            0 9px transparent, 
+            0 10px 10px rgba(0, 0, 0, 0.6);
+            transform: translateY(20px);
+            animation: bounce 0.3s ease infinite alternate;
+        }
+        @for $i from 0 through 6{
+            span:nth-child(#{$i+1}){
+                animation-delay:  $i*0.1s;
+            }
+        }
 
-            border-radius: 100%;
-            position: absolute;
-            -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
-            animation: bouncedelay 1.2s infinite ease-in-out;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-        }
-        .circle1 { top: 0; left: 0; }
-        .circle2 { top: 0; right: 0; }
-        .circle3 { right: 0; bottom: 0; }
-        .circle4 { left: 0; bottom: 0; }
-    }
-    .container1 {
-        .circle2 {
-            -webkit-animation-delay: -0.9s;
-            animation-delay: -0.9s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.6s;
-            animation-delay: -0.6s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.3s;
-            animation-delay: -0.3s;
+        @keyframes bounce {
+            100%{
+                text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb, 0 5px #bbb, 0 6px #bbb, 0 7px #bbb, 0 8px #bbb, 0 9px #bbb, 0 50px 25px rgba(0, 0, 0, 0.2);
+                transform: translateY(-20px);
+            }
         }
     }
-    .container2 {
-        -webkit-transform: rotateZ(45deg);
-        transform: rotateZ(45deg);
-        .circle1 {
-            -webkit-animation-delay: -1.1s;
-            animation-delay: -1.1s;
-        }
-        .circle2 {
-            -webkit-animation-delay: -0.8s;
-            animation-delay: -0.8s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.5s;
-            animation-delay: -0.5s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.2s;
-            animation-delay: -0.2s;
-        }
-    }
-    .container3 {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-        .circle1 {
-            -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
-        }
-        .circle2 {
-            -webkit-animation-delay: -0.7s;
-            animation-delay: -0.7s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.4s;
-            animation-delay: -0.4s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.1s;
-            animation-delay: -0.1s;
-        }
-    }
-}
-
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.0) }
-  40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
-}
 ```
 
 ## 相关项目

@@ -21,9 +21,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/QiShaoXuan/css_tricks/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/QiShaoXuan/css_tricks#readme",
+  "homepage": "",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "clipboard": "^2.0.4",
-    "vue-i18n": "^8.14.0",
-    "vuepress-plugin-cat": "^1.0.2"
+    "vue-i18n": "^8.14.0"
   }
 }

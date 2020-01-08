@@ -1,68 +1,45 @@
+<template>
+  <div class="load-container">
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+      <div class="boxLoading"></div>
+  </div>
+</template>
+
 <style scoped lang="scss">
 .load-container {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .container{
-        width: 50px;
-        height: 60px;
-        text-align: center;
-        font-size: 10px;
-        .boxLoading {
-            background-color: #00adb5;
-            height: 100%;
-            width: 6px;
-            display: inline-block;
-
-            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
-            animation: stretchdelay 1.2s infinite ease-in-out;
-        }
-        .boxLoading2 {
-            -webkit-animation-delay: -1.1s;
-            animation-delay: -1.1s;
-        }
-        .boxLoading3 {
-            -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
-        }
-        .boxLoading4 {
-            -webkit-animation-delay: -0.9s;
-            animation-delay: -0.9s;
-        }
-        .boxLoading5 {
-            -webkit-animation-delay: -0.8s;
-            animation-delay: -0.8s;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  .boxLoading {
+    background-color: #00adb5;
+    height: 60px;
+    width: 6px;
+    margin-right: 4px;
+    display: inline-block;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+  }
+  @for $i from 2 through 5 {
+    .boxLoading:nth-child(#{$i}) {
+      animation-delay: 0.1 * $i - 1.3s;
     }
+  }
 }
 
-@-webkit-keyframes stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
-  20% { -webkit-transform: scaleY(1.0) }
-}
 @keyframes stretchdelay {
-  0%, 40%, 100% {
-    transform: scaleY(0.4);
-    -webkit-transform: scaleY(0.4);
-  }  20% {
-    transform: scaleY(1.0);
-    -webkit-transform: scaleY(1.0);
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.5);
+  }
+  20% {
+    transform: scaleY(1);
   }
 }
 </style>
-
-<template>
-    <div class="load-container">
-        <div class="container">
-            <div class="boxLoading boxLoading1"></div>
-            <div class="boxLoading boxLoading2"></div>
-            <div class="boxLoading boxLoading3"></div>
-            <div class="boxLoading boxLoading4"></div>
-            <div class="boxLoading boxLoading5"></div>
-        </div>
-    </div>
-</template>
 
 <script>
 export default {

@@ -1,124 +1,56 @@
-<style scoped lang="scss">
-.load-container {
-    margin: 50px auto;
-    width: 48px;
-    height: 48px;
-    position: relative;
-    .container{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        .circle{
-            width: 12px;
-            height: 12px;
-            background-color: #00adb5;
-            
-            border-radius: 100%;
-            position: absolute;
-            -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
-            animation: bouncedelay 1.2s infinite ease-in-out;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-        }
-        .circle1 { top: 0; left: 0; }
-        .circle2 { top: 0; right: 0; }
-        .circle3 { right: 0; bottom: 0; }
-        .circle4 { left: 0; bottom: 0; }
-    }
-    .container1 {
-        .circle2 {
-            -webkit-animation-delay: -0.9s;
-            animation-delay: -0.9s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.6s;
-            animation-delay: -0.6s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.3s;
-            animation-delay: -0.3s;
-        }
-    }
-    .container2 {
-        -webkit-transform: rotateZ(45deg);
-        transform: rotateZ(45deg);
-        .circle1 {
-            -webkit-animation-delay: -1.1s;
-            animation-delay: -1.1s;
-        }
-        .circle2 {
-            -webkit-animation-delay: -0.8s;
-            animation-delay: -0.8s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.5s;
-            animation-delay: -0.5s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.2s;
-            animation-delay: -0.2s;
-        }
-    }
-    .container3 {
-        -webkit-transform: rotateZ(90deg);
-        transform: rotateZ(90deg);
-        .circle1 {
-            -webkit-animation-delay: -1.0s;
-            animation-delay: -1.0s;
-        }
-        .circle2 {
-            -webkit-animation-delay: -0.7s;
-            animation-delay: -0.7s;
-        }
-        .circle3 {
-            -webkit-animation-delay: -0.4s;
-            animation-delay: -0.4s;
-        }
-        .circle4 {
-            -webkit-animation-delay: -0.1s;
-            animation-delay: -0.1s;
-        }
-    }
-}
+<template>
+  <div class="container">
+    <div class="load-container">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </div>
+  </div>
+</template>
 
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.0) }
-  40% { -webkit-transform: scale(1.0) }
+<style lang="scss">
+$color: #2980b9;
+$shadowColor: darken($color, 10%);
+.container {
+  padding: 30px 0;
 }
- 
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
+.load-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color;
+  font-family: "Baloo Bhaijaan", cursive;
+  font-weight: bolder;
+  text-transform: uppercase;
+  > span {
+    font-size: 60px;
+    text-shadow: 0 1px $shadowColor, 0 2px $shadowColor, 0 3px $shadowColor,
+      0 4px $shadowColor, 0 5px $shadowColor, 0 6px transparent,
+      0 7px transparent, 0 8px transparent, 0 9px transparent,
+      0 10px 10px rgba(0, 0, 0, 0.6);
+    transform: translateY(20px);
+    animation: bounce 0.3s ease infinite alternate;
+  }
+  @for $i from 0 through 6 {
+    span:nth-child(#{$i + 1}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+
+  @keyframes bounce {
+    100% {
+      text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb, 0 5px #bbb,
+        0 6px #bbb, 0 7px #bbb, 0 8px #bbb, 0 9px #bbb,
+        0 50px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(-20px);
+    }
   }
 }
 </style>
-
-<template>
-    <div class="load-container">
-        <div class="container container1">
-            <div class="circle circle1"></div>
-            <div class="circle circle2"></div>
-            <div class="circle circle3"></div>
-            <div class="circle circle4"></div>
-        </div>
-        <div class="container container2">
-            <div class="circle circle1"></div>
-            <div class="circle circle2"></div>
-            <div class="circle circle3"></div>
-            <div class="circle circle4"></div>
-        </div>
-        <div class="container container3">
-            <div class="circle circle1"></div>
-            <div class="circle circle2"></div>
-            <div class="circle circle3"></div>
-            <div class="circle circle4"></div>
-        </div>
-    </div>
-</template>
 
 <script>
 export default {
