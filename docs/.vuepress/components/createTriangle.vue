@@ -575,12 +575,12 @@ export default {
       this.colors = this.toArray(colors).join(" ");
 
       let outputCssStr = `.triangle {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: ${this.lengths};
-  border-color: ${this.colors};
-}`;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: ${this.lengths};
+            border-color: ${this.colors};
+      }`;
       let cssCode = Prism.highlight(outputCssStr, Prism.languages.css);
       this.$refs["code-container"].innerHTML = cssCode;
     },

@@ -1,0 +1,178 @@
+<template>
+  <div class="menu-container">
+    <div class="menu-bar-con">
+      <button
+        class="menu-bar-btn"
+        @click="isOpenChange"
+        :class="{ 'btn-active': isOpen }"
+      >
+        <span class="icon">+</span>
+      </button>
+    </div>
+    <ul class="menu-item-list">
+      <menu-item
+        v-for="(item, itemIndex) in iconImgArr"
+        :radius="radius"
+        :index="itemIndex"
+        :angleCur="startAngle + angleStep * itemIndex"
+        :animationDuration="animationDuration"
+        :itemAnimationDelay="0 + itemIndex * itemAnimationDelay"
+        :icon="'icon-' + item.iconName"
+        :showItem="showItem"
+        :isOpen="isOpen"
+        :total="iconImgArr.length"
+        :currentIndex="currentIndex"
+        v-on:showItemChange="showItemChange"
+        v-on:isOpenChange="isOpenChange"
+        v-on:animationCountIncrease="
+          val => {
+            animationCountIncrease(val);
+          }
+        "
+      >
+      </menu-item>
+    </ul>
+  </div>
+</template>
+<style lang="scss">
+.menu-container {
+  user-select: none;
+  border-radius: 50%;
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.menu-bar-con {
+  .menu-bar-btn {
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    background-color: #74a982;
+    color: white;
+    outline: none;
+    &.btn-active {
+      transform: rotate(45deg);
+    }
+    &:hover {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    }
+    .icon {
+      position: relative;
+      font-size: 32px;
+      line-height: 60%;
+    }
+  }
+}
+.menu-item-list {
+  list-style-type: none;
+}
+</style>
+
+<script>
+import item from "./Item/item.vue";
+import { Message } from "element-ui";
+export default {
+  props: {
+    startAngle: {
+      default: 0
+    },
+    radius: {
+      default: 160
+    },
+    itemAnimationDelay: {
+      default: 0.04
+    },
+    animationDuration: {
+      default: 0.5
+    },
+    endAngle: {
+      default: 315
+    },
+    itemNum: {
+      default: 8
+    },
+    iconImgArr: Array
+  },
+  data() {
+    return {
+      showItem: true,
+      isOpen: false,
+      total: this.iconImgArr.length,
+      count: 0,
+      currentIndex: -1
+    };
+  },
+
+  computed: {
+    angleStep() {
+      return (this.endAngle - this.startAngle) / (this.itemNum - 1);
+    }
+  },
+  created() {
+    //   把每个button的背景图片的class插入到html中,方便以后使用。
+    let cssRule = "";
+    this.iconImgArr.map(item => {
+      cssRule += this.gennerateIconStyle(item);
+    });
+    let style = document.createElement("style");
+    style.type = "text/css";
+    style.innerHTML = cssRule;
+    document.head.appendChild(style);
+  },
+
+  methods: {
+    // 产生icon的类
+    gennerateIconStyle(icon) {
+      let cssRule =
+        ".icon-" +
+        icon.iconName +
+        "{" +
+        "background-image: url(" +
+        icon.iconUrl +
+        ");" +
+        "background-size: " +
+        icon.iconSize +
+        "%; " +
+        "}\n";
+      return cssRule;
+    },
+    animationCountIncrease() {
+      this.count++;
+      if (this.count === this.total) {
+        this.isOpenChange();
+        this.count = 0;
+      }
+    },
+    showItemChange(index) {
+      this.showItem = false;
+      this.currentIndex = index;
+      Message({
+        message: `当前点击了${index}`,
+        type: "success",
+        center: true
+      });
+    },
+    isOpenChange() {
+      if (!this.isOpen && !this.showItem) {
+        this.showItem = true;
+      }
+      this.isOpen = !this.isOpen;
+    },
+    setAmination() {
+      let angleCur = this.startAngle;
+    }
+  },
+  components: {
+    "menu-item": item
+  }
+};
+</script>

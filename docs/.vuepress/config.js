@@ -59,7 +59,7 @@ module.exports = {
     }
   },
   plugins: [
-    require("./plugins/comment/index"),
+    // require("./plugins/comment/index"),
     require("./plugins/copy/index"),
     "@vuepress/nprogress",
     [
@@ -137,7 +137,8 @@ module.exports = {
               ["/stickyBall/", "粘性球"],
               ["/parabola/", "抛物线"],
               ["/notCSS/ripple", "涟漪"],
-              ["/notCSS/wave", "波浪"]
+              ["/notCSS/wave", "波浪"],
+              ["/menu/", "环形菜单"]
             ]
           },
           {
