@@ -45,6 +45,12 @@ module.exports = {
       }
     ]
   ],
+  markdown: {
+    anchor: { permalink: false },
+    config: md => {
+      md.use(require('markdown-it-include'), './')
+    }
+  },
   repo: "",
   locales: {
     "/": {
@@ -129,6 +135,7 @@ module.exports = {
             collapsable: false,
             children: [
               ["/poptip/", "提示气泡"],
+              ["/textTypeing/", "纯CSS实现打字动画"],
               ["/accordion/", "手风琴"],
               ["/hover/", "悬停"],
               ["/flash/", "图片闪光"],
@@ -169,6 +176,7 @@ module.exports = {
               ["/triangle/", "三角形边框"],
               ["/ellipsis/", "文字超出显示省略号"],
               ["/lineBreak/", "插入换行"],
+              ["/cssScrollBar/", "纯css实现顶部滚动条"],
               ["/glass/", "毛玻璃效果"],
               ["/align/", "参数列表自适应对齐"],
               ["/positionWidth/", "绝对定位宽度自动撑开"],
