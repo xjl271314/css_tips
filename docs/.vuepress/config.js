@@ -62,19 +62,19 @@ module.exports = {
     // require("./plugins/comment/index"),
     require("./plugins/copy/index"),
     "@vuepress/nprogress",
-    [
-      "@vuepress/google-analytics",
-      {
-        ga: CONFIG.ga
-      }
-    ],
-    [
-      "vuepress-plugin-google-adsense",
-      {
-        google_ad_client: "ca-pub-3591151685475548",
-        enable_page_level_ads: true
-      }
-    ]
+    // [
+    //   "@vuepress/google-analytics",
+    //   {
+    //     ga: CONFIG.ga
+    //   }
+    // ],
+    // [
+    //   "vuepress-plugin-google-adsense",
+    //   {
+    //     google_ad_client: "ca-pub-3591151685475548",
+    //     enable_page_level_ads: true
+    //   }
+    // ]
   ],
   themeConfig: {
     nav: [
@@ -147,6 +147,7 @@ module.exports = {
             children: [
               ["/reset/", "清除默认样式"],
               ["/scrollTemp/", "滚动条样式"],
+              ["/mixin/", "mixin"],
               ["/media/", "media 参考"],
               ["/landscapeScreen/", "强制横屏"],
               ["/cursor/", "手型"],
@@ -160,6 +161,7 @@ module.exports = {
             title: "技巧",
             collapsable: false,
             children: [
+              ["/textCenter/","单行文字水平居中多行文本向左对齐"],
               ["/verticalMiddle/", "垂直居中"],
               ["/autoHeight/", "高度自动撑满"],
               ["/vertical/", "消除图片间隙 & 图文居中"],
