@@ -177,6 +177,7 @@ module.exports = {
               ["/ellipsis/", "文字超出显示省略号"],
               ["/lineBreak/", "插入换行"],
               ["/cssScrollBar/", "纯css实现顶部滚动条"],
+              ["/scrollSnapType/","使用 sroll-snap-type 优化滚动"],
               ["/glass/", "毛玻璃效果"],
               ["/align/", "参数列表自适应对齐"],
               ["/positionWidth/", "绝对定位宽度自动撑开"],
