@@ -136,6 +136,7 @@ module.exports = {
             children: [
               ["/poptip/", "提示气泡"],
               ["/textTypeing/", "纯CSS实现打字动画"],
+              ["/cssAnimationCard/", "css可折叠手风琴"],
               ["/accordion/", "手风琴"],
               ["/hover/", "悬停"],
               ["/flash/", "图片闪光"],
