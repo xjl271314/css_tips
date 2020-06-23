@@ -115,7 +115,8 @@ module.exports = {
               ["/createTriangle/", "三角形生成器"],
               ["/sector/", "扇形生成器"],
               ["/hollowOut/", " 卡券生成器"],
-              ["/smallFont/", "小于 12px 的文字生成器"]
+              ["/smallFont/", "小于 12px 的文字生成器"],
+              ["/createBorder/", "边框生成器"]
             ]
           },
           {
