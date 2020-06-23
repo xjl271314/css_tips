@@ -1,4 +1,5 @@
 const CONFIG = require("../../private-config");
+const moment = require('moment');
 module.exports = {
   title: "CSS Tricks",
   description: "some CSS tricks, 一些常用的 CSS 样式, 一点 CSS 技巧",
@@ -68,6 +69,12 @@ module.exports = {
     // require("./plugins/comment/index"),
     require("./plugins/copy/index"),
     "@vuepress/nprogress",
+    ['@vuepress/last-updated',{
+      transformer: (timestamp, lang) => {
+        moment.locale(lang)
+        return moment(timestamp).format('YYYY-MM-DD HH:mm:SS')
+      }
+    }]
     // [
     //   "@vuepress/google-analytics",
     //   {
