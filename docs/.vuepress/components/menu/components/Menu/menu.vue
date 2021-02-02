@@ -25,7 +25,7 @@
         v-on:showItemChange="showItemChange"
         v-on:isOpenChange="isOpenChange"
         v-on:animationCountIncrease="
-          val => {
+          (val) => {
             animationCountIncrease(val);
           }
         "
@@ -83,24 +83,24 @@ import { Message } from "element-ui";
 export default {
   props: {
     startAngle: {
-      default: 0
+      default: 0,
     },
     radius: {
-      default: 160
+      default: 160,
     },
     itemAnimationDelay: {
-      default: 0.04
+      default: 0.04,
     },
     animationDuration: {
-      default: 0.5
+      default: 0.5,
     },
     endAngle: {
-      default: 315
+      default: 315,
     },
     itemNum: {
-      default: 8
+      default: 8,
     },
-    iconImgArr: Array
+    iconImgArr: Array,
   },
   data() {
     return {
@@ -108,25 +108,29 @@ export default {
       isOpen: false,
       total: this.iconImgArr.length,
       count: 0,
-      currentIndex: -1
+      currentIndex: -1,
     };
   },
 
   computed: {
     angleStep() {
       return (this.endAngle - this.startAngle) / (this.itemNum - 1);
-    }
+    },
   },
-  created() {
+  created() {},
+
+  mounted() {
     //   把每个button的背景图片的class插入到html中,方便以后使用。
     let cssRule = "";
-    this.iconImgArr.map(item => {
+    this.iconImgArr.map((item) => {
       cssRule += this.gennerateIconStyle(item);
     });
-    let style = document.createElement("style");
-    style.type = "text/css";
-    style.innerHTML = cssRule;
-    document.head.appendChild(style);
+    if (document) {
+      let style = document.createElement("style");
+      style.type = "text/css";
+      style.innerHTML = cssRule;
+      document.head.appendChild(style);
+    }
   },
 
   methods: {
@@ -158,7 +162,7 @@ export default {
       Message({
         message: `当前点击了${index}`,
         type: "success",
-        center: true
+        center: true,
       });
     },
     isOpenChange() {
@@ -169,10 +173,10 @@ export default {
     },
     setAmination() {
       let angleCur = this.startAngle;
-    }
+    },
   },
   components: {
-    "menu-item": item
-  }
+    "menu-item": item,
+  },
 };
 </script>
