@@ -25,6 +25,7 @@
 <script>
 import ClipboardJS from "clipboard";
 import { Message } from "element-ui";
+
 export default {
   name: "Copy",
   data() {
@@ -42,6 +43,7 @@ export default {
     initCopyBtn() {
       setTimeout(() => {
         const containers = document.querySelectorAll(".extra-class");
+
         [].forEach.call(containers, (container, index) => {
           const pre = container.querySelector("pre");
           if (!pre) {
@@ -64,21 +66,21 @@ export default {
 
         const btns = document.querySelectorAll(".copy-btn");
         var clipboard = new ClipboardJS(btns);
-        clipboard.on("success", function(e) {
+        clipboard.on("success", function (e) {
           Message({
             message: "复制成功",
             type: "success",
             center: true,
-            customClass: "copy-message"
+            customClass: "copy-message",
           });
         });
 
-        clipboard.on("error", function(e) {
+        clipboard.on("error", function (e) {
           Message({
             message: "复制失败，请手动复制",
             type: "error",
             center: true,
-            customClass: "copy-message"
+            customClass: "copy-message",
           });
         });
       }, 500);
@@ -86,7 +88,7 @@ export default {
     getLanguage(classList) {
       const langClassName = [].filter.call(
         classList,
-        v => v.indexOf("language") !== -1
+        (v) => v.indexOf("language") !== -1
       )[0];
 
       if (langClassName) {
@@ -94,7 +96,7 @@ export default {
       }
 
       return "";
-    }
-  }
+    },
+  },
 };
 </script>
