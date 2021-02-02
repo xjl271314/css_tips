@@ -1,4 +1,3 @@
-const CONFIG = require("../../private-config");
 const moment = require('moment');
 module.exports = {
     title: "CSS Tricks",

@@ -11,8 +11,7 @@
         "dev": "npx vuepress dev docs",
         "build": "npm run build:readme && vuepress build docs",
         "deploy": "gh-pages -d dist",
-        "deploy:build": "npm run build && gh-pages -d dist",
-        "build:readme": "node ./build/buildReadme.js"
+        "deploy:build": "npm run build && gh-pages -d dist"
     },
     "repository": {
         "type": "git",
