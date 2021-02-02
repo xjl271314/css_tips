@@ -18,11 +18,8 @@
     "type": "git",
     "url": "git+https://github.com/QiShaoXuan/css_tricks.git"
   },
-  "author": "",
+  "author": "xjl271314",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
   "homepage": "",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
@@ -39,6 +36,7 @@
   "dependencies": {
     "@vuepress/plugin-last-updated": "^1.5.2",
     "clipboard": "^2.0.4",
+    "core-js": "^3.8.3",
     "markdown-it-include": "^1.1.0",
     "markdown-it-mermaid": "^0.2.5",
     "moment": "^2.27.0",

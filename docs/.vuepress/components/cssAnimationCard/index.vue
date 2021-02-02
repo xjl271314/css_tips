@@ -245,7 +245,7 @@ summary:focus {
 </template>
 
 <script>
-// import './index.js';
+import './index';
 export default {
   name: "cssAnimationCard",
   data() {

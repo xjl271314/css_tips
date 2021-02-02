@@ -75,19 +75,6 @@ module.exports = {
         return moment(timestamp).format('YYYY-MM-DD HH:mm:SS')
       }
     }]
-    // [
-    //   "@vuepress/google-analytics",
-    //   {
-    //     ga: CONFIG.ga
-    //   }
-    // ],
-    // [
-    //   "vuepress-plugin-google-adsense",
-    //   {
-    //     google_ad_client: "ca-pub-3591151685475548",
-    //     enable_page_level_ads: true
-    //   }
-    // ]
   ],
   themeConfig: {
     nav: [
@@ -123,7 +110,8 @@ module.exports = {
               ["/sector/", "扇形生成器"],
               ["/hollowOut/", " 卡券生成器"],
               ["/smallFont/", "小于 12px 的文字生成器"],
-              ["/createBorder/", "边框生成器"]
+              ["/createBorder/", "边框生成器"],
+              ["/createBorderGradient/", "渐变边框生成器"]
             ]
           },
           {
@@ -196,7 +184,8 @@ module.exports = {
               ["/tab/circle-border.md", "tab 底部圆形边框衔接"],
               ["/hollowOut/", "圆形镂空"],
               ["/hollowOut/trangle.md", "三角形镂空"],
-              ["/polygonLayout/", "多边形布局"]
+              ["/polygonLayout/", "多边形布局"],
+              ["/tips/heightAutoTransition", "手风琴折叠效果"]
             ]
           }
         ]

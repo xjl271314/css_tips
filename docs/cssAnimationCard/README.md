@@ -1,1 +1,1 @@
-<cssAnimationCard-index />
+<cssAnimationCard />

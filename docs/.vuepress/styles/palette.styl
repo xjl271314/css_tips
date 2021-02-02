@@ -2,6 +2,15 @@ $accentColor = #00adb5
 $textColor = #222831
 $borderColor = #eeeeee
 $codeBgColor = #282c34
-.sidebar
-  z-index :11
+
+// 修改2级目录透明度
+.sidebar-group.is-sub-group > .sidebar-heading:not(.clickable){
+  opacity :1
+}
+
+// 修改内容最大宽度
+.theme-default-content{
+    max-width: 1020px!important;
+}
+
 
