@@ -13,10 +13,6 @@
         "deploy": "gh-pages -d dist",
         "deploy:build": "npm run build && gh-pages -d dist"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/xjl271314/css_tips"
-    },
     "author": "xjl271314",
     "license": "ISC",
     "homepage": "",
