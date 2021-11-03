@@ -90,3 +90,35 @@
   .grandsonElement {}
 }
 ```
+
+
+## 单行文本的图标垂直居中
+
+:::tip
+关键属性使用1ex来实现垂直居中
+:::
+
+<demos-ex />
+
+```html
+<div class="box">
+    显示全部内容
+    <div class="arrow-down" />
+</div>
+```
+
+```scss
+.box {
+  padding: 10px;
+  background: skyblue;
+  color: #fff;
+  font-size: 24px;
+}
+
+.arrow-down {
+  display: inline-block;
+  width: 24px;
+  height: 1ex; // 关键代码 不会随着字号的改变改变效果
+  background: url("../images/arrow-down.png") no-repeat center / cover;
+}
+```
