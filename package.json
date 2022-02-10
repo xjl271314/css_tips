@@ -20,7 +20,7 @@
         "element-ui": "^2.9.1",
         "gh-pages": "^2.0.1",
         "gitalk": "^1.5.0",
-        "node-sass": "^4.14.1",
+        "node-sass": "^7.0.0",
         "sass-loader": "^7.1.0",
         "vuepress": "^1.0.1",
         "vuepress-plugin-google-adsense": "0.0.3"
