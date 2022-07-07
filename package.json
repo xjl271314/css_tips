@@ -30,7 +30,7 @@
         "core-js": "^2.6.4",
         "markdown-it-include": "^1.1.0",
         "markdown-it-mermaid": "^0.2.5",
-        "moment": "^2.27.0",
+        "moment": "^2.29.4",
         "vue-i18n": "^8.14.0"
     }
 }
